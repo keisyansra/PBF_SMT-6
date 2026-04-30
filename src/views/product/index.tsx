@@ -1,15 +1,20 @@
-import styles from "../../produk/product.module.scss";
+import styles from "../../pages/produk/product.module.scss";
 
 type ProductType = {
     id: string;
     name: string;
     price: number;
-    size: string;
     category: string;
     image: string;
 };
 
-const TampilanProduk = ({ products, isLoading }: { products: ProductType[]; isLoading: boolean }) => {
+const TampilanProduk = ({ 
+    products, 
+    isLoading 
+}: { 
+    products: ProductType[]; 
+    isLoading: boolean;
+}) => {
     return (
         <div className={styles.produk}>
             <h1 className={styles.produk__title}>Daftar Produk</h1>

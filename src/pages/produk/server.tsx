@@ -1,13 +1,13 @@
 
-import TampilanProduk from "../views/product";
-import { ProductType } from "../types/Product.type";
+import TampilanProduk from "../../views/product";
+import { ProductType } from "../../types/Product.type";
 
 const halamanProdukServer = (props:{products:ProductType[]}) => {
     const { products } = props;
     return (
         <div>
             <h1>Halaman Produk Server</h1>
-            <TampilanProduk products={products} />
+            <TampilanProduk products={products} isLoading={false} />
         </div>
     );
 };
