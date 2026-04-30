@@ -1,45 +1,19 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-// import ProdukView from "../views/produk";
+import TampilanProduk from "../views/product";  
+import useSWR from "swr";
+import fetcher from "../utils/db/swr/fetcher";
 
-type ProductType = {
-  id: string;
-  name: string;
-  price: number;
-  size: string;
-  category: string;
-}
+// const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const kategori = () => {
-  const [products, setProducts] = useState([]);
+  const { data, error, isLoading } = useSWR("/api/produk", fetcher);
 
-  const fetchProducts = () => {
-    fetch("/api/produk")
-      .then((response) => response.json())
-      .then((responsedata) => {
-        setProducts(responsedata.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching produk:", error);
-      });
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const products = data?.data || [];
 
   return (
     <div>
-      <h1>Daftar Produk</h1>
-      <button onClick={fetchProducts}>Refresh Data</button>
-      {products.map((product:ProductType) => (
-        <div key={product.id}>
-          <h2>{product.name}</h2>
-          <p>Harga: {product.price}</p>
-          <p>Ukuran: {product.size}</p>
-          <p>Kategori: {product.category}</p>
-        </div>
-      ))}
+      <TampilanProduk products={products} isLoading={isLoading} />
     </div>
   );
 };
