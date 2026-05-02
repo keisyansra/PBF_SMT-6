@@ -4,7 +4,7 @@ import {
     retrieveProducts, 
     retrieveByID,
 
-} from "../../utils/db/servicefirebase";
+} from "../../../utils/db/servicefirebase";
 
 type Data = {
     status: boolean;
