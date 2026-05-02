@@ -13,7 +13,7 @@ const kategori = () => {
 
   return (
     <div>
-      <TampilanProduk products={products} isLoading={isLoading} />
+      <TampilanProduk products={products} />
     </div>
   );
 };
