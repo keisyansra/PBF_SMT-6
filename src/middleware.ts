@@ -12,16 +12,6 @@ export function middleware(request: NextRequest) {
     }
 
     return NextResponse.next();
-    // const isLogin = false;
-
-    // if (!isLogin) {
-    //     return NextResponse.redirect(new URL("/auth/login", request.url));
-    // }
-
-    // return NextResponse.next();
-
-    // return NextResponse.redirect(new URL("/", request.url));
-    // return NextResponse.next();
 }
 
 export const config = {
